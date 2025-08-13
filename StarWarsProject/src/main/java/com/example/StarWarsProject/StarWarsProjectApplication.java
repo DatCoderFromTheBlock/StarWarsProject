@@ -40,10 +40,8 @@ public class StarWarsProjectApplication {
 				ObjectMapper objectMapper = new ObjectMapper();
 				JsonNode jsonResponse = objectMapper.readTree(connection.getInputStream());
 
-				// Get the first planet result
 				JsonNode planetResult = jsonResponse.get("results").get(0);
 
-				// Extract the planet name and the number of residents
 				String nameOfPlanet;
 				int nrOfResidents;
 				try {
@@ -55,7 +53,6 @@ public class StarWarsProjectApplication {
 					nrOfResidents = -1;
 					noPlanet.printStackTrace();
 				}
-				// Create the JSON response
 				ObjectNode jsonNode = objectMapper.createObjectNode();
 				jsonNode.put("planet", nameOfPlanet);
 				jsonNode.put("residents", nrOfResidents);
